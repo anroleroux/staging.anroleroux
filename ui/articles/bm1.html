@@ -172,11 +172,8 @@
       </section>
       <section>
         <h2 class="num">Governing Interactions</h2>
-        <p><span class="figure-number" data-fid="no-gov">Figure</span> show how the ungoverned particle, not only moved instantly infinitely far (the arrow pointing to infinity), it also instantly moved at an infinite velocity (vertical lines), as well as instantly had an infinite acceleration (the sharp bent) as long as the force acted upon it. Fortunately all matter has mass, making it lazy to change a state of stasis or motion. Additionally friction is all around us, dissipating kinetic energy into everything moving objects touches. But forces that strive to reduce displacement will be the starting consideration.</p>
-        <div class="note block">
-          <h4>Note</h4>
-          <p>This article is only concerned with macroscopic physical phenomena where bodies move relatively slow (compared to light). The fictitious infinities of position, velocity and acceleration in the imaginary absence of governing interactions is the important takeaway.</p>
-        </div>
+        <p><span class="figure-number" data-fid="no-gov">Figure</span> show how the ungoverned particle, not only moved instantly infinitely far (the arrow pointing to infinity), it also instantly moved at an infinite velocity (vertical lines), as well as instantly had an infinite acceleration (the sharp bent) as long as the force acted upon it. Fortunately all matter has mass, making it lazy to change a state of stasis or motion.</p>
+        <p>The mass, or more generally referred to as inertia makes the bends rounder as listed in <span class="figure-number" data-fid="govs">Table</span>. Additionally friction is all around us, dissipating kinetic energy into everything moving objects touches. It limits the speed that can be reached, reducing the gradient. But forces that strive to reduce displacement will be the starting consideration.</p>
         <table class="gov-table">
           <thead>
             <tr>
@@ -204,6 +201,10 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="govs" data-label="Table"><p>Table of governing effects and how it's presented on a displacement graph.</p></div>
+        <div class="note block">
+          <h4>Note</h4>
+          <p>This article is only concerned with macroscopic physical phenomena where bodies move relatively slow (compared to light). The fictitious infinities of position, velocity and acceleration in the imaginary absence of governing interactions is the important takeaway.</p>
+        </div>
         <h3 class="num">Displacement Constraints</h3>
         <p>A car driving on a level freeway has no direct displacement constraint relative to an earlier location. It can stop and freely remain anywhere on the freeway. It has, what is called, rigid body motion. When pulling a trailer, the car and trailer can be approximated as lumped masses connected by a stiff spring. Both, together, still exhibit rigid body motion but relative displacement between them is resisted. When accelerating and decelerating, the trailer coupler (and surrounding structure) will slightly stretch and compress respectively.</p>
         <p>There are different types of displacement constraints. The car body and wheels can also be approximated as lumped masses connected by softer springs (suspension). Zooming in on one part like a chassis beam, it can be approximated by a thousand slices connected by springs. Even the car on a slope, free to roll, will be pulled to a lower point. Similar to a pendulum, this is also a form of distance constraint. Here gravity acts as the displacement constraining force that drops to zero at the lowest point.</p>
@@ -229,7 +230,7 @@
       </section>
       <section>
         <h2 class="num">Component Summary</h2>
-        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the change in displacement and acceleration is the change in velocity.</p>
+        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity.</p>
         <table class="gov-table">
           <thead>
             <tr>
@@ -253,8 +254,8 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
-        <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (change in displacement) and acceleration are bends (change in gradient). In calculus the rate of change of a value is a derivative so:</p>
-        <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} \quad \text{and} \quad a = \frac{d^2x}{dt^2}\]</p>
+        <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
+        <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
         <h3 class="num">Stiffness</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
@@ -334,6 +335,7 @@
             <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(m\), kg, \(F = ma\)</dd>
           </div>
         </dl>
+        <p>Note how stiffness and inertia stores energy while only damping dissipates energy. These properties result in the effect that energy is usually transferred back and forth between stiffness storage and inertia storage. In between such transfers, energy gets dissipated due to damping. An example is used to highlight this point next.</p>
       </section>
       <section>
         <h2 class="num">Motion-Energy Relationship</h2>
@@ -344,7 +346,7 @@
         <p>Additional to the potential-kinetic-potential-kinetic-potential energy transfer, energy gets dissipated while moving through the air and other effects. Kinetic energy right before impact is equal to the starting (\(x_0\)) potential energy (ignoring drag energy loss). The highest (at impact) velocity (\(v_{max}\)) can be calculated as:</p>
         <p>\[KE = \tfrac{1}{2} m v_{max}^2 \approx m g x_0 = PE\]</p>
         <p>\[v_{max} \approx \sqrt{2 g x_0}\]</p>
-        <p>A drag force of \(F_d = C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
+        <p>A drag force of \(F_d = \tfrac{1}{2} C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
         <p>Then as it bounced the deformation of the ball absorbs some energy as heat because of the fibers and polymers that rub against each other. Even the floor can deform, taking some of the ball’s energy and contributing to the bounce sound.</p>
       </section>
       <section>
@@ -436,11 +438,8 @@
       </section>
       <section>
         <h2 class="num">Governing Interactions</h2>
-        <p><span class="figure-number" data-fid="no-gov">Figure</span> show how the ungoverned particle, not only moved instantly infinitely far (the arrow pointing to infinity), it also instantly moved at an infinite velocity (vertical lines), as well as instantly had an infinite acceleration (the sharp bent) as long as the force acted upon it. Fortunately all matter has mass, making it lazy to change a state of stasis or motion. Additionally friction is all around us, dissipating kinetic energy into everything moving objects touches. But forces that strive to reduce displacement will be the starting consideration.</p>
-        <div class="note block">
-          <h4>Note</h4>
-          <p>This article is only concerned with macroscopic physical phenomena where bodies move relatively slow (compared to light). The fictitious infinities of position, velocity and acceleration in the imaginary absence of governing interactions is the important takeaway.</p>
-        </div>
+        <p><span class="figure-number" data-fid="no-gov">Figure</span> show how the ungoverned particle, not only moved instantly infinitely far (the arrow pointing to infinity), it also instantly moved at an infinite velocity (vertical lines), as well as instantly had an infinite acceleration (the sharp bent) as long as the force acted upon it. Fortunately all matter has mass, making it lazy to change a state of stasis or motion.</p>
+        <p>The mass, or more generally referred to as inertia makes the bends rounder as listed in <span class="figure-number" data-fid="govs">Table</span>. Additionally friction is all around us, dissipating kinetic energy into everything moving objects touches. It limits the speed that can be reached, reducing the gradient. But forces that strive to reduce displacement will be the starting consideration.</p>
         <table class="gov-table">
           <thead>
             <tr>
@@ -468,6 +467,10 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="govs" data-label="Table"><p>Table of governing effects and how it's presented on a displacement graph.</p></div>
+        <div class="note block">
+          <h4>Note</h4>
+          <p>This article is only concerned with macroscopic physical phenomena where bodies move relatively slow (compared to light). The fictitious infinities of position, velocity and acceleration in the imaginary absence of governing interactions is the important takeaway.</p>
+        </div>
         <h3 class="num">Displacement Constraints</h3>
         <p>A car driving on a level freeway has no direct displacement constraint relative to an earlier location. It can stop and freely remain anywhere on the freeway. It has, what is called, rigid body motion. When pulling a trailer, the car and trailer can be approximated as lumped masses connected by a stiff spring. Both, together, still exhibit rigid body motion but relative displacement between them is resisted. When accelerating and decelerating, the trailer coupler (and surrounding structure) will slightly stretch and compress respectively.</p>
         <p>There are different types of displacement constraints. The car body and wheels can also be approximated as lumped masses connected by softer springs (suspension). Zooming in on one part like a chassis beam, it can be approximated by a thousand slices connected by springs. Even the car on a slope, free to roll, will be pulled to a lower point. Similar to a pendulum, this is also a form of distance constraint. Here gravity acts as the displacement constraining force that drops to zero at the lowest point.</p>
@@ -493,7 +496,7 @@
       </section>
       <section>
         <h2 class="num">Component Summary</h2>
-        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the change in displacement and acceleration is the change in velocity.</p>
+        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity.</p>
         <table class="gov-table">
           <thead>
             <tr>
@@ -517,8 +520,8 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
-        <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (change in displacement) and acceleration are bends (change in gradient). In calculus the rate of change of a value is a derivative so:</p>
-        <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} \quad \text{and} \quad a = \frac{d^2x}{dt^2}\]</p>
+        <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
+        <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
         <h3 class="num">Stiffness</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
@@ -598,6 +601,7 @@
             <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(m\), kg, \(F = ma\)</dd>
           </div>
         </dl>
+        <p>Note how stiffness and inertia stores energy while only damping dissipates energy. These properties result in the effect that energy is usually transferred back and forth between stiffness storage and inertia storage. In between such transfers, energy gets dissipated due to damping. An example is used to highlight this point next.</p>
       </section>
       <section>
         <h2 class="num">Motion-Energy Relationship</h2>
@@ -608,7 +612,7 @@
         <p>Additional to the potential-kinetic-potential-kinetic-potential energy transfer, energy gets dissipated while moving through the air and other effects. Kinetic energy right before impact is equal to the starting (\(x_0\)) potential energy (ignoring drag energy loss). The highest (at impact) velocity (\(v_{max}\)) can be calculated as:</p>
         <p>\[KE = \tfrac{1}{2} m v_{max}^2 \approx m g x_0 = PE\]</p>
         <p>\[v_{max} \approx \sqrt{2 g x_0}\]</p>
-        <p>A drag force of \(F_d = C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
+        <p>A drag force of \(F_d = \tfrac{1}{2} C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
         <p>Then as it bounced the deformation of the ball absorbs some energy as heat because of the fibers and polymers that rub against each other. Even the floor can deform, taking some of the ball’s energy and contributing to the bounce sound.</p>
       </section>
       <section>
