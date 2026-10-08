@@ -215,7 +215,7 @@
         <div class="figure-numbering ref num" data-fig="fictSgraph" data-label="Figure"><p>A step-up-down force applied on an object only governed by stiffness. The position responds instantaneously and proportionally, mirroring the form of the force exactly.</p></div>
         <p><span class="figure-number" data-fid="fictSgraph">Figure</span> shows how applying a force to the particle now will displace it proportional to the force. It instantaneously moves to the equilibrium distance between the acting force and the constraining spring force. The position is now governed but it still reaches infinite speeds and acceleration. The graph still has both the vertical gradient and sharp bents.</p>
         <h3 class="num">Velocity Constrains</h3>
-        <p>The second law of thermodynamics says that entropy always increases. If we define entropy as the spread of energy we can see how any moving object spreads its kinetic energy to the surroundings. Everything that moves bumps into air molecules or scraps along surfaces. Even rolling ball bearings compress the crystal lattice in their races, absorbing some of the briefly stored potential energy and converting it into heat.</p>
+        <p>The second law of thermodynamics says that entropy always increases. If entropy is defined as the spread of energy one can see how any moving object spreads its kinetic energy to the surroundings. Everything that moves bumps into air molecules or scraps along surfaces. Even rolling ball bearings compress the crystal lattice in their races, absorbing some of the briefly stored potential energy and converting it into heat.</p>
         <p>The resistance to motion (or velocity) becomes intuitively more as speed increases. This is called damping, but there are also different types of velocity constraints. Air resistance is a resisting force proportional to velocity squared. Friction force between two surfaces is usually modeled as a constant resisting force. However, for low Reynolds numbers like viscous oil flowing laminarly through an orifice in a damper, the damping resistance force is linearly proportional to velocity.</p>
         <p>\[F = cv\]</p>
         <p>With only damping applied to the <span class="figure-number" data-fid="no-gov">Figure</span> particle, its velocity is limited. Displacement wise, it can still move infinitely far (exhibit rigid body motion) but gets stopped by damping when no force is applied to it. It also still has sharp corners because of the lack of inertia.</p>
@@ -230,7 +230,8 @@
       </section>
       <section>
         <h2 class="num">Component Summary</h2>
-        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity.</p>
+        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity. Energy is also pulled into the picture as it goes hand-in-hand with the components.</p>
+        <h3 class="num">Movement Calculus</h3>
         <table class="gov-table">
           <thead>
             <tr>
@@ -256,16 +257,19 @@
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
         <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
         <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
+        <p>The stiffness displacement graph is therefore the derivative of the damping displacement graph and the damping graph the derivative of the inertia graph. When looking from a velocity perspective, the damping velocity graph looks the same as the stiffness. The pattern is shown in <span class="figure-number" data-fid="diff-smd">Figure</span> that shows all nine combinations of components and perspectives. Diagonals stay the same and differentiation is from right to left and top to bottom.</p>
         <div class="art-fig"><div class="charta diff-smd-fig"></div></div>
-        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p></p></div>
-        <h3 class="num">Stiffness</h3>
+        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p>The same step force applied to a particle governed only by stiffness, damping or inertia, seen as position, velocity and acceleration. Each row is the derivative of the row above, so moving down a row looks the same as moving one column to the left. Where a graph jumps, its derivative becomes an infinite spike.</p></div>
+        <h3 class="num">Component Details</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Stiffness</dt>
             <dd><span class="gov-mob-label">Causes</span>Spring, material elasticity, air compression, shaft torsion</dd>
             <dd><span class="gov-mob-label">Opposes</span>Displacement</dd>
             <dd><span class="gov-mob-label">Function of</span>displacement, \(x\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Stores potential energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(k\), N/m, \(F = kx\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(k\), N/m</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = kx\)</dd>
           </div>
         </dl>
         <table class="gov-table">
@@ -317,26 +321,29 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="sequs" data-label="Table"><p>Various mechanisms of stiffness</p></div>
-        <h3 class="num">Damping</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Damping</dt>
             <dd><span class="gov-mob-label">Causes</span>Air resistance, fluid resistance, surface friction, material deformation energy absorption</dd>
             <dd><span class="gov-mob-label">Opposes</span>Velocity (rate of change of displacement)</dd>
             <dd><span class="gov-mob-label">Function of</span>velocity, \(v\), \(\dot{x}\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Dissipates kinetic energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(c\), N s/m, \(F = cv\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(c\), N s/m</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = cv\)</dd>
           </div>
         </dl>
-        <h3 class="num">Inertia</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Inertia</dt>
             <dd><span class="gov-mob-label">Causes</span>Linear acceleration, rotational acceleration</dd>
             <dd><span class="gov-mob-label">Opposes</span>Acceleration (rate of change of velocity)</dd>
             <dd><span class="gov-mob-label">Function of</span>acceleration, \(a\), \(\ddot{x}\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Stores kinetic energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(m\), kg, \(F = ma\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(m\), kg</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = ma\)</dd>
           </div>
         </dl>
+        <h3 class="num">Energy Relation</h3>
         <p>Note how stiffness and inertia stores energy while only damping dissipates energy. These properties result in the effect that energy is usually transferred back and forth between stiffness storage and inertia storage. In between such transfers, energy gets dissipated due to damping. An example is used to highlight this point next.</p>
       </section>
       <section>
@@ -349,8 +356,8 @@
         <p>\[KE = \tfrac{1}{2} m v_{max}^2 \approx m g x_0 = PE\]</p>
         <p>\[v_{max} \approx \sqrt{2 g x_0}\]</p>
         <p>A drag force of \(F_d = \tfrac{1}{2} C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
-        <p>When the ball hits the floor a new energy conversion branch splits off from the main branch. Steal balls bouncing on steal is 99% elastic, restoring it's spherical shape when detatching from the floor. Sports balls has a contact time with the floor that is much shorter than the period of the ball’s first natural frequency. This cause it to oscilate between a squished and stretched oval shape while travelling up after impact.</p>
-        <p>A considerable amount of energy goes into this oscillation that dissipates it into sound energy (S) and heat energy, both outside (H) and inside the rubber (h). Even the floor, if flexible relative to the ball’s dinamics, will also absorb energy and vibrate, dissipating it as sound energy. The vibrating phenomena is possible because of stiffness and inertia and will be seen again in <span class="figure-number" data-fid="stiffness-and-inertia">Section</span>.</p>
+        <p>When the ball hits the floor a new energy conversion branch splits off from the main branch. Steel balls bouncing on steel are 99% elastic, restoring its spherical shape when leaving the floor. Sports balls has a contact time with the floor that is much shorter than the period of the ball’s first natural frequency. This causes it to oscillate between a squished and stretched oval shape while travelling up after impact.</p>
+        <p>A considerable amount of energy goes into this oscillation that dissipates it into sound energy (S) and heat energy, both outside (H) and inside the rubber (h). Even the floor, if flexible relative to the ball’s dynamics, will also absorb energy and vibrate, dissipating it as sound energy. The vibrating phenomena is possible because of stiffness and inertia and will be seen again in <span class="figure-number" data-fid="stiffness-and-inertia">Section</span>.</p>
       </section>
       <section>
         <h2 class="num">Combined Effect of Governing Interactions</h2>
@@ -489,7 +496,7 @@
         <div class="figure-numbering ref num" data-fig="fictSgraph" data-label="Figure"><p>A step-up-down force applied on an object only governed by stiffness. The position responds instantaneously and proportionally, mirroring the form of the force exactly.</p></div>
         <p><span class="figure-number" data-fid="fictSgraph">Figure</span> shows how applying a force to the particle now will displace it proportional to the force. It instantaneously moves to the equilibrium distance between the acting force and the constraining spring force. The position is now governed but it still reaches infinite speeds and acceleration. The graph still has both the vertical gradient and sharp bents.</p>
         <h3 class="num">Velocity Constrains</h3>
-        <p>The second law of thermodynamics says that entropy always increases. If we define entropy as the spread of energy we can see how any moving object spreads its kinetic energy to the surroundings. Everything that moves bumps into air molecules or scraps along surfaces. Even rolling ball bearings compress the crystal lattice in their races, absorbing some of the briefly stored potential energy and converting it into heat.</p>
+        <p>The second law of thermodynamics says that entropy always increases. If entropy is defined as the spread of energy one can see how any moving object spreads its kinetic energy to the surroundings. Everything that moves bumps into air molecules or scraps along surfaces. Even rolling ball bearings compress the crystal lattice in their races, absorbing some of the briefly stored potential energy and converting it into heat.</p>
         <p>The resistance to motion (or velocity) becomes intuitively more as speed increases. This is called damping, but there are also different types of velocity constraints. Air resistance is a resisting force proportional to velocity squared. Friction force between two surfaces is usually modeled as a constant resisting force. However, for low Reynolds numbers like viscous oil flowing laminarly through an orifice in a damper, the damping resistance force is linearly proportional to velocity.</p>
         <p>\[F = cv\]</p>
         <p>With only damping applied to the <span class="figure-number" data-fid="no-gov">Figure</span> particle, its velocity is limited. Displacement wise, it can still move infinitely far (exhibit rigid body motion) but gets stopped by damping when no force is applied to it. It also still has sharp corners because of the lack of inertia.</p>
@@ -504,7 +511,8 @@
       </section>
       <section>
         <h2 class="num">Component Summary</h2>
-        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity.</p>
+        <p>The three components are stiffness, damping and inertia that opposes displacement, velocity and acceleration respectively. It's important to point out that velocity is the rate of change in displacement and acceleration is the rate of change in velocity. Energy is also pulled into the picture as it goes hand-in-hand with the components.</p>
+        <h3 class="num">Movement Calculus</h3>
         <table class="gov-table">
           <thead>
             <tr>
@@ -530,16 +538,19 @@
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
         <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
         <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
+        <p>The stiffness displacement graph is therefore the derivative of the damping displacement graph and the damping graph the derivative of the inertia graph. When looking from a velocity perspective, the damping velocity graph looks the same as the stiffness. The pattern is shown in <span class="figure-number" data-fid="diff-smd">Figure</span> that shows all nine combinations of components and perspectives. Diagonals stay the same and differentiation is from right to left and top to bottom.</p>
         <div class="art-fig"><div class="charta diff-smd-fig"></div></div>
-        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p></p></div>
-        <h3 class="num">Stiffness</h3>
+        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p>The same step force applied to a particle governed only by stiffness, damping or inertia, seen as position, velocity and acceleration. Each row is the derivative of the row above, so moving down a row looks the same as moving one column to the left. Where a graph jumps, its derivative becomes an infinite spike.</p></div>
+        <h3 class="num">Component Details</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Stiffness</dt>
             <dd><span class="gov-mob-label">Causes</span>Spring, material elasticity, air compression, shaft torsion</dd>
             <dd><span class="gov-mob-label">Opposes</span>Displacement</dd>
             <dd><span class="gov-mob-label">Function of</span>displacement, \(x\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Stores potential energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(k\), N/m, \(F = kx\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(k\), N/m</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = kx\)</dd>
           </div>
         </dl>
         <table class="gov-table">
@@ -591,26 +602,29 @@
           </tbody>
         </table>
         <div class="table-numbering figure-numbering ref num" data-fig="sequs" data-label="Table"><p>Various mechanisms of stiffness</p></div>
-        <h3 class="num">Damping</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Damping</dt>
             <dd><span class="gov-mob-label">Causes</span>Air resistance, fluid resistance, surface friction, material deformation energy absorption</dd>
             <dd><span class="gov-mob-label">Opposes</span>Velocity (rate of change of displacement)</dd>
             <dd><span class="gov-mob-label">Function of</span>velocity, \(v\), \(\dot{x}\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Dissipates kinetic energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(c\), N s/m, \(F = cv\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(c\), N s/m</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = cv\)</dd>
           </div>
         </dl>
-        <h3 class="num">Inertia</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
+            <dt>Inertia</dt>
             <dd><span class="gov-mob-label">Causes</span>Linear acceleration, rotational acceleration</dd>
             <dd><span class="gov-mob-label">Opposes</span>Acceleration (rate of change of velocity)</dd>
             <dd><span class="gov-mob-label">Function of</span>acceleration, \(a\), \(\ddot{x}\)</dd>
             <dd><span class="gov-mob-label">Stores or Dissipates Energy</span>Stores kinetic energy</dd>
-            <dd><span class="gov-mob-label">Typical Symbol, Unit, Characteristic</span>\(m\), kg, \(F = ma\)</dd>
+            <dd><span class="gov-mob-label">Typical Symbol, Unit</span>\(m\), kg</dd>
+            <dd><span class="gov-mob-label">Typical Characteristic</span>\(F = ma\)</dd>
           </div>
         </dl>
+        <h3 class="num">Energy Relation</h3>
         <p>Note how stiffness and inertia stores energy while only damping dissipates energy. These properties result in the effect that energy is usually transferred back and forth between stiffness storage and inertia storage. In between such transfers, energy gets dissipated due to damping. An example is used to highlight this point next.</p>
       </section>
       <section>
@@ -623,8 +637,8 @@
         <p>\[KE = \tfrac{1}{2} m v_{max}^2 \approx m g x_0 = PE\]</p>
         <p>\[v_{max} \approx \sqrt{2 g x_0}\]</p>
         <p>A drag force of \(F_d = \tfrac{1}{2} C_d \rho A v^2\) would have worked to slow the ball down all the way from \(x_0\) to the floor (from \(v = 0\) to \(v = v_{max}\)).</p>
-        <p>When the ball hits the floor a new energy conversion branch splits off from the main branch. Steal balls bouncing on steal is 99% elastic, restoring it's spherical shape when detatching from the floor. Sports balls has a contact time with the floor that is much shorter than the period of the ball’s first natural frequency. This cause it to oscilate between a squished and stretched oval shape while travelling up after impact.</p>
-        <p>A considerable amount of energy goes into this oscillation that dissipates it into sound energy (S) and heat energy, both outside (H) and inside the rubber (h). Even the floor, if flexible relative to the ball’s dinamics, will also absorb energy and vibrate, dissipating it as sound energy. The vibrating phenomena is possible because of stiffness and inertia and will be seen again in <span class="figure-number" data-fid="stiffness-and-inertia">Section</span>.</p>
+        <p>When the ball hits the floor a new energy conversion branch splits off from the main branch. Steel balls bouncing on steel are 99% elastic, restoring its spherical shape when leaving the floor. Sports balls has a contact time with the floor that is much shorter than the period of the ball’s first natural frequency. This causes it to oscillate between a squished and stretched oval shape while travelling up after impact.</p>
+        <p>A considerable amount of energy goes into this oscillation that dissipates it into sound energy (S) and heat energy, both outside (H) and inside the rubber (h). Even the floor, if flexible relative to the ball’s dynamics, will also absorb energy and vibrate, dissipating it as sound energy. The vibrating phenomena is possible because of stiffness and inertia and will be seen again in <span class="figure-number" data-fid="stiffness-and-inertia">Section</span>.</p>
       </section>
       <section>
         <h2 class="num">Combined Effect of Governing Interactions</h2>
