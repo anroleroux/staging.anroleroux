@@ -256,6 +256,8 @@
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
         <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
         <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
+        <div class="art-fig"><div class="charta diff-smd-fig"></div></div>
+        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p></p></div>
         <h3 class="num">Stiffness</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
@@ -528,6 +530,8 @@
         <div class="table-numbering figure-numbering ref num" data-fig="components" data-label="Table"><p>Governing components and type of movement they oppose.</p></div>
         <p>That is why displacement is the y-value in <span class="figure-number" data-fid="no-gov">Figure</span>, velocity is the gradient (rate of change in displacement) and acceleration are bends (how the gradient changes). In calculus the rate of change of a value is a derivative and can be written as:</p>
         <p>\[v = \frac{dx}{dt}, \quad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\]</p>
+        <div class="art-fig"><div class="charta diff-smd-fig"></div></div>
+        <div class="figure-numbering ref num" data-fig="diff-smd" data-label="Figure"><p></p></div>
         <h3 class="num">Stiffness</h3>
         <dl class="gov-list">
           <div class="gov-mob-row">
@@ -1038,6 +1042,143 @@ function drawInertiaResponse(layerId, isDark) {
 
 drawInertiaResponse('alm-layer', false);
 drawInertiaResponse('cos-layer', true);
+
+// ── diff-smd: stiffness / damping / inertia × position / velocity / acceleration ──
+// The same step force applied to each single-component particle, seen from
+// three derivatives. Each row down differentiates the row above, so a sharp
+// corner becomes a jump and a jump becomes an infinite spike (drawn as an
+// ∞ arrow; a spike's own derivative is a ± pair of arrows).
+//   stiffness  x = F/k        → v = ±∞ spikes   → a = ±∞ spike pairs
+//   damping    x = ramp       → v = F/c (step)  → a = ±∞ spikes
+//   inertia    x = quadratic  → v = ramp        → a = F/m (step)
+function drawDiffGrid(layerId, isDark) {
+  var container = document.querySelector('#' + layerId + ' .diff-smd-fig');
+  if (!container) return;
+  container.innerHTML = '';
+
+  var posCol  = isDark ? '#d6ab5e' : '#8a3a13';
+  var guide   = isDark ? 'rgba(236,226,200,0.18)' : 'rgba(28,22,16,0.14)';
+  var zeroCol = isDark ? 'rgba(236,226,200,0.30)' : 'rgba(28,22,16,0.22)';
+
+  var W = 640, H = 530;
+  var m = { top: 34, right: 12, bottom: 40, left: 64 };
+  var colGap = 22, rowGap = 28;
+  var cellW = (W - m.left - m.right - 2 * colGap) / 3;
+  var cellH = (H - m.top - m.bottom - 2 * rowGap) / 3;
+
+  var t0 = 1, t1 = 3, tMax = 5;
+  var zero = [[0,0],[tMax,0]];
+  var quad = [[0,0],[t0,0]];
+  for (var i = 1; i <= 60; i++) {
+    var tc = t0 + (t1 - t0) * i / 60;
+    quad.push([tc, 0.25 * Math.pow(tc - t0, 2)]);   // a = 0.5
+  }
+  quad.push([tMax, 1 + (tMax - t1)]);                 // coasts at v = 1
+
+  // rows: position, velocity, acceleration · columns: stiffness, damping, inertia
+  // imp: infinite spikes [t, sign] · dbl: derivative of a spike, a ± arrow pair
+  var cells = [
+    [ { data: [[0,0],[t0,0],[t0,1],[t1,1],[t1,0],[tMax,0]] },
+      { data: [[0,0],[t0,0],[t1,1],[tMax,1]] },
+      { data: quad } ],
+    [ { data: zero, imp: [[t0, 1], [t1, -1]] },
+      { data: [[0,0],[t0,0],[t0,0.5],[t1,0.5],[t1,0],[tMax,0]] },
+      { data: [[0,0],[t0,0],[t1,1],[tMax,1]] } ],
+    [ { data: zero, dbl: [[t0, 1], [t1, -1]] },
+      { data: zero, imp: [[t0, 1], [t1, -1]] },
+      { data: [[0,0],[t0,0],[t0,0.5],[t1,0.5],[t1,0],[tMax,0]] } ]
+  ];
+  var colTitles = ['Stiffness only', 'Damping only', 'Inertia only'];
+  var rowLabels = ['position x', 'velocity v', 'acceleration a'];
+
+  var x = d3.scaleLinear().domain([0, tMax]).range([0, cellW]);
+
+  var svg = d3.select(container).append('svg')
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+
+  var markId = layerId + '-arrow-diff';
+  svg.append('defs').append('marker')
+    .attr('id', markId)
+    .attr('viewBox', '0 0 10 10').attr('refX', 5).attr('refY', 5)
+    .attr('markerWidth', 6).attr('markerHeight', 6)
+    .attr('orient', 'auto')
+    .append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z').attr('fill', posCol);
+
+  cells.forEach(function(row, ri) {
+    row.forEach(function(cell, ci) {
+      var left = m.left + ci * (cellW + colGap);
+      var top  = m.top + ri * (cellH + rowGap);
+      var g = svg.append('g').attr('transform', 'translate(' + left + ',' + top + ')');
+
+      // spikes run off to ±∞, so their cells get a symmetric axis
+      var spikes = cell.imp || cell.dbl;
+      var hi = d3.max(cell.data, function(d){ return d[1]; });
+      var y = d3.scaleLinear().domain(spikes ? [-1.25, 1.25] : [0, hi * 1.25]).range([cellH, 0]);
+
+      if (ri === 0) {
+        g.append('text').attr('class', 'panel-title')
+          .attr('x', cellW / 2).attr('y', -14).attr('text-anchor', 'middle').text(colTitles[ci]);
+      }
+      if (ci === 0) {
+        g.append('text').attr('class', 'axis-label').attr('transform', 'rotate(-90)')
+          .attr('x', -cellH / 2).attr('y', -18).attr('text-anchor', 'middle').text(rowLabels[ri]);
+      }
+
+      // time axis: ticks on the bottom row only
+      var xAxis = d3.axisBottom(x).ticks(5).tickFormat(function(d){ return d + 's'; });
+      if (ri < 2) xAxis.tickValues([]).tickSizeOuter(0);
+      g.append('g').attr('transform', 'translate(0,' + cellH + ')').call(xAxis);
+      g.append('g').call(d3.axisLeft(y).tickValues([]).tickSizeOuter(0));
+
+      [t0, t1].forEach(function(tt) {
+        g.append('line').attr('x1', x(tt)).attr('x2', x(tt))
+          .attr('y1', cellH).attr('y2', 0)
+          .attr('stroke', guide).attr('stroke-width', 1).attr('stroke-dasharray', '3 3');
+      });
+      if (spikes) {
+        g.append('line').attr('x1', 0).attr('x2', cellW)
+          .attr('y1', y(0)).attr('y2', y(0))
+          .attr('stroke', zeroCol).attr('stroke-width', 1);
+      }
+
+      var line = d3.line().x(function(d){ return x(d[0]); }).y(function(d){ return y(d[1]); });
+      g.append('path').datum(cell.data).attr('fill', 'none')
+        .attr('stroke', posCol).attr('stroke-width', 2)
+        .attr('stroke-linejoin', 'round').attr('d', line);
+
+      function arrow(px, sign) {
+        g.append('line')
+          .attr('x1', px).attr('y1', y(0))
+          .attr('x2', px).attr('y2', y(sign * 1.05))
+          .attr('stroke', posCol).attr('stroke-width', 2)
+          .attr('marker-end', 'url(#' + markId + ')');
+      }
+      function infLabel(px, sign) {
+        g.append('text')
+          .attr('x', px + 8).attr('y', sign > 0 ? y(1) + 4 : y(-1) + 4)
+          .attr('fill', posCol).attr('font-size', 13).attr('opacity', 0.75)
+          .text(sign > 0 ? '∞' : '−∞');
+      }
+      (cell.imp || []).forEach(function(s) {
+        arrow(x(s[0]), s[1]);
+        infLabel(x(s[0]), s[1]);
+      });
+      (cell.dbl || []).forEach(function(s) {
+        arrow(x(s[0]) - 4, s[1]);
+        arrow(x(s[0]) + 4, -s[1]);
+        infLabel(x(s[0]) + 4, s[1]);
+      });
+    });
+  });
+
+  svg.append('text').attr('class', 'axis-label')
+    .attr('x', m.left + (W - m.left - m.right) / 2).attr('y', H - 4).attr('text-anchor', 'middle')
+    .text('time (s)');
+}
+
+drawDiffGrid('alm-layer', false);
+drawDiffGrid('cos-layer', true);
 
 // ── Figures 5–8: combined governing interactions ──────────────
 // Numerically integrate  m·x'' + c·x' + k·x = F(t)  for a step-up–down force.
